@@ -17,4 +17,5 @@ session_start();
 require_once __DIR__ . '/../config/conexion.php';
 require_once __DIR__ . '/ayudantes.php';
 require_once __DIR__ . '/Modelos/IncidenciaModelo.php';
+require_once __DIR__ . '/Validador.php';
 require_once __DIR__ . '/Controladores/IncidenciaControlador.php';

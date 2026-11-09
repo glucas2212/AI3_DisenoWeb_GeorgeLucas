@@ -31,4 +31,25 @@ class IncidenciaModelo
         $consulta->execute();
         return $consulta->fetchAll();
     }
+
+    /**
+     * Inserta una incidencia validada con una sentencia preparada.
+     * Los datos se envían aparte de la instrucción SQL, por eso no pueden alterarla.
+     */
+    public function registrar(array $incidencia): int
+    {
+        $sentencia = $this->bd->prepare(
+            'INSERT INTO incidencias (solicitante, correo, id_area, tipo, prioridad, descripcion)
+             VALUES (:solicitante, :correo, :id_area, :tipo, :prioridad, :descripcion)'
+        );
+        $sentencia->execute([
+            ':solicitante' => $incidencia['solicitante'],
+            ':correo'      => $incidencia['correo'],
+            ':id_area'     => $incidencia['id_area'],
+            ':tipo'        => $incidencia['tipo'],
+            ':prioridad'   => $incidencia['prioridad'],
+            ':descripcion' => $incidencia['descripcion'],
+        ]);
+        return (int) $this->bd->lastInsertId();
+    }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 /*
  * Controlador frontal: todas las peticiones entran por aquí.
  *   index.php                      -> listado de incidencias (Read)
+ *   index.php?accion=nueva         -> formulario
+ *   index.php?accion=guardar (POST) -> inserción (Create)
  */
 require __DIR__ . '/app/arranque.php';
 
@@ -12,6 +14,8 @@ try {
     $accion = $_GET['accion'] ?? 'listado';
 
     match (true) {
+        $accion === 'nueva'                                             => $controlador->nueva(),
+        $accion === 'guardar' && $_SERVER['REQUEST_METHOD'] === 'POST'  => $controlador->guardar(),
         default                                                         => $controlador->listado(),
     };
 } catch (RuntimeException $error) {
