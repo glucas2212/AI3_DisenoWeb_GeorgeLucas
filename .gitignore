@@ -1,0 +1,20 @@
+# Credenciales locales de la base de datos
+config/credenciales.php
+.env
+
+# Logs y archivos temporales
+*.log
+/logs/
+/tmp/
+
+# Dependencias de Composer o npm (si se agregan)
+/vendor/
+/node_modules/
+
+# Archivos del sistema operativo y del editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp

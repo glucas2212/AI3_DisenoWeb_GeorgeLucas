@@ -1,0 +1,9 @@
+Options -Indexes
+
+# Archivos ocultos (.env, .gitignore, .htaccess) no se sirven por web.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# La carpeta .git tampoco (si el proyecto se clonó dentro de htdocs).
+RedirectMatch 404 /\.git(/|$)
