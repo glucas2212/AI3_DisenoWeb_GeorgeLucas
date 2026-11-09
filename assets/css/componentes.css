@@ -1,0 +1,52 @@
+/* ---------- Tabla de incidencias ---------- */
+.tabla-desplazable { overflow-x: auto; background: var(--panel); border-radius: 8px; box-shadow: 0 0 0 1px var(--borde); }
+.tabla { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.tabla th { padding: .7rem .8rem; text-align: left; font-size: .82rem; color: var(--texto-2); background: #eceff5; white-space: nowrap; }
+.tabla td { padding: .75rem .8rem; vertical-align: top; border-top: 1px solid var(--borde); }
+.tabla td small { display: block; color: var(--texto-2); font-size: .82rem; overflow-wrap: anywhere; }
+.tabla .folio { font-weight: 800; color: var(--azul); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tabla .descripcion { min-width: 16rem; max-width: 26rem; overflow-wrap: anywhere; }
+
+.prioridad { display: inline-block; padding: .1rem .55rem; border-radius: 999px; font-size: .8rem; font-weight: 700; white-space: nowrap; border: 1px solid currentColor; }
+.prioridad--baja { color: #3f6b48; }
+.prioridad--media { color: #7a5f00; }
+.prioridad--alta { color: #b4500c; }
+.prioridad--critica { color: #fff; background: var(--rojo); border-color: var(--rojo); }
+
+/* ---------- Formulario ---------- */
+.formulario { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.formulario fieldset { margin: 0; padding: 1.1rem 1.25rem .5rem; border: 0; border-radius: 8px; background: var(--panel); box-shadow: 0 0 0 1px var(--borde); }
+.formulario legend { float: left; width: 100%; margin-bottom: .75rem; font-weight: 800; font-size: 1.05rem; }
+.campo { clear: both; display: flex; flex-direction: column; margin-bottom: .35rem; }
+.campo label, .campo__etiqueta { font-weight: 600; margin-bottom: .3rem; }
+.campo input, .campo select, .campo textarea {
+    width: 100%; min-height: 2.75rem; padding: .55rem .7rem; font: inherit; color: var(--texto);
+    background: #fff; border: 1px solid #9aa2b4; border-radius: 6px;
+}
+.campo textarea { resize: vertical; min-height: 7rem; }
+.campo [aria-invalid], .opciones[aria-invalid] { border-color: var(--rojo); box-shadow: 0 0 0 1px var(--rojo); }
+.campo__ayuda { margin: .2rem 0 0; color: var(--texto-2); font-size: .85rem; }
+.campo__error { min-height: 1.3rem; margin: .15rem 0 0; color: var(--rojo); font-size: .88rem; font-weight: 600; }
+
+.opciones { display: flex; flex-wrap: wrap; gap: .4rem; padding: 2px; border-radius: 6px; }
+.opcion { position: relative; cursor: pointer; }
+.opcion input { position: absolute; inset: 0; opacity: 0; margin: 0; }
+.opcion span { display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0 .9rem; border: 1px solid #9aa2b4; border-radius: 6px; background: #fff; font-weight: 600; }
+.opcion input:checked + span { background: var(--azul); border-color: var(--azul); color: #fff; }
+.opcion input:focus-visible + span { outline: 3px solid var(--azul); outline-offset: 2px; }
+
+.formulario__acciones { grid-column: 1 / -1; display: flex; gap: 1.25rem; align-items: center; }
+.boton { min-height: 2.9rem; padding: 0 1.4rem; border: 0; border-radius: 6px; background: var(--azul); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.boton:hover { background: var(--azul-osc); }
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 46rem) {
+    .formulario { grid-template-columns: minmax(0, 1fr); }
+    .tabla-desplazable { background: none; box-shadow: none; }
+    .tabla thead { display: none; }
+    .tabla, .tabla tbody, .tabla tr, .tabla td { display: block; }
+    .tabla tr { margin-bottom: .8rem; padding: .3rem 0; background: var(--panel); border-radius: 8px; box-shadow: 0 0 0 1px var(--borde); }
+    .tabla td { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: .6rem; padding: .4rem .85rem; border-top: 0; }
+    .tabla td::before { content: attr(data-col); color: var(--texto-2); font-size: .82rem; font-weight: 600; }
+    .tabla .descripcion { min-width: 0; max-width: none; }
+}
