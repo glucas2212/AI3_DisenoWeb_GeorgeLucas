@@ -1,0 +1,47 @@
+@font-face { font-family: "Public Sans"; src: url("../fuentes/public-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Public Sans"; src: url("../fuentes/public-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Public Sans"; src: url("../fuentes/public-sans-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+
+:root {
+    --fondo: #f4f5f8;
+    --panel: #ffffff;
+    --texto: #1b2233;
+    --texto-2: #586176;
+    --borde: #d3d7e0;
+    --azul: #2f4fa8;
+    --azul-osc: #233c82;
+    --rojo: #b42318;
+    --rojo-fondo: #fdecea;
+    --verde-fondo: #e6f2ea;
+    --verde: #2f6b45;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: var(--texto); font: 400 1rem/1.5 "Public Sans", system-ui, sans-serif; }
+a { color: var(--azul); }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+
+.cabecera {
+    display: flex; flex-wrap: wrap; gap: .75rem 2rem; align-items: center; justify-content: space-between;
+    padding: .9rem max(1rem, calc((100% - 70rem) / 2));
+    background: var(--panel); border-bottom: 4px solid var(--azul);
+}
+.cabecera__marca { color: var(--texto); font-weight: 800; font-size: 1.2rem; text-decoration: none; line-height: 1.1; }
+.cabecera__marca span { display: block; color: var(--texto-2); font-size: .8rem; font-weight: 600; }
+.cabecera__menu { display: flex; gap: 1.25rem; align-items: center; }
+.cabecera__menu a { font-weight: 600; text-decoration: none; }
+.cabecera__menu a:hover { text-decoration: underline; }
+.cabecera__accion { padding: .45rem .9rem; border-radius: 6px; background: var(--azul); color: #fff !important; }
+.cabecera__accion:hover { background: var(--azul-osc); text-decoration: none !important; }
+
+.contenido { max-width: 70rem; margin: 0 auto; padding: 1.75rem 1rem 3rem; }
+.encabezado-pagina { margin-bottom: 1.25rem; }
+.encabezado-pagina h1 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -.015em; }
+.encabezado-pagina p { margin: .25rem 0 0; color: var(--texto-2); }
+
+.aviso { margin: 0 0 1.25rem; padding: .8rem 1rem; border-radius: 6px; }
+.aviso h1 { margin: 0 0 .25rem; font-size: 1.25rem; }
+.aviso p { margin: 0; }
+.aviso--ok { background: var(--verde-fondo); color: var(--verde); font-weight: 600; }
+.aviso--error { background: var(--rojo-fondo); color: var(--rojo); }
+.vacio { padding: 2.5rem 1rem; text-align: center; background: var(--panel); border-radius: 8px; color: var(--texto-2); }
